@@ -9,7 +9,7 @@
 
 import React, {Component} from 'react';
 import {SafeAreaView, StyleSheet, StatusBar, View} from 'react-native';
-import ImageView from './component/ImageView';
+import CustomListView from './component/CustomListView';
 
 const onPress = () => {
   alert('Hey i am from Norway!');
@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <>
         <SafeAreaView>
-          <ImageView label="Tom Hank" />
+          <CustomListView label="Tom Hank" />
         </SafeAreaView>
       </>
     );
