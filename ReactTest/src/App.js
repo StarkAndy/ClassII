@@ -7,27 +7,40 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import {SafeAreaView, StyleSheet, StatusBar, View} from 'react-native';
-//import HomePage from './pages/HomePage';
-import MyPage from './pages/MyPage';
-//import ButtonWithProps from './component/ButtonWithProps';
+import ImageView from './component/ImageView';
 
 const onPress = () => {
   alert('Hey i am from Norway!');
 };
-const App = () => {
-  let buttonLabel = 'Login';
-  let haveEatenBreakfast = true;
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      {/* <ButtonWithProps label="Login" onTest={onPress} /> */}
-      <MyPage />
-      <SafeAreaView />
-    </>
-  );
-};
+    this.state = {
+      username: 'Gyanesh',
+      password: '',
+    };
+  }
+
+  _changeValueUserName = (text) => {
+    this.setState({username: text});
+  };
+
+  _changeValuePassword = (text) => {
+    this.setState({password: text});
+  };
+
+  render() {
+    return (
+      <>
+        <SafeAreaView>
+          <ImageView label="Tom Hank" />
+        </SafeAreaView>
+      </>
+    );
+  }
+}
 
 export default App;
