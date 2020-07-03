@@ -8,8 +8,18 @@
  */
 
 import React, {Component} from 'react';
-import {SafeAreaView, StyleSheet, StatusBar, View} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  StatusBar,
+  View,
+  YellowBox,
+} from 'react-native';
 import CustomListView from './component/CustomListView';
+
+import Route from './navigation/route';
+
+YellowBox.ignoreWarnings(['Warning ..']);
 
 const onPress = () => {
   alert('Hey i am from Norway!');
@@ -35,9 +45,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <SafeAreaView>
-          <CustomListView label="Tom Hank" />
-        </SafeAreaView>
+        <Route />
       </>
     );
   }

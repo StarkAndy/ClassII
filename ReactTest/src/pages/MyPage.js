@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 
 import Button from '../component/Button';
 import CustomTextButton from '../component/CustomText';
@@ -11,6 +11,18 @@ class MyPage extends Component {
     this.state = {
       labelCustom: 'Hey Whatzz up?',
       labelButton: 'Label',
+      mockData: [
+        {
+          id: 1,
+          name: 'John Millar',
+          age: 32,
+        },
+        {
+          id: 2,
+          name: 'Van Disel',
+          age: 43,
+        },
+      ],
     };
   }
   _onButtonPressed = () => {
@@ -23,16 +35,38 @@ class MyPage extends Component {
       labelButton: 'Hey its changing all messed up',
     });
   };
+  renderT() {
+    return (
+      <View>
+        <Button
+          label="Next"
+          onPress={() => this.props.navigation.navigate('DetailPage')}
+        />
+        <Text>Test</Text>
+      </View>
+    );
+  }
+
   render() {
     return (
       <View>
-        <CustomTextButton
-          label={this.state.labelCustom}
-          onPressCustom={this._onButtonCustom}
-        />
-        <Button
-          label={this.state.labelButton}
-          onOwnButtonPress={this._onButtonPressed}
+        <FlatList
+          data={this.state.mockData}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={(item) => {
+            return (
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate('DetailPage', {
+                    item: item.item,
+                  })
+                }>
+                <View>
+                  <Text>{item.item.name}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          }}
         />
       </View>
     );
